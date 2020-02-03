@@ -8,53 +8,32 @@ class MiddleRing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: pieWidth,
       height: pieWidth,
+      width: pieWidth,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(pieWidth / 2),
-        ),
+        color: Colors.white,
+        shape: BoxShape.circle,
       ),
       child: Center(
         child: Container(
-          height: pieWidth * 0.5,
-          width: pieWidth * 0.5,
+          height: pieWidth * 0.3,
+          width: pieWidth * 0.3,
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(pieWidth / 2),
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(-1.5, -1.5),
+                color: shadowColor,
+                spreadRadius: 2.0,
+                // blurRadius: 0,
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.white70,
-                  spreadRadius: 1.0,
-                )
-              ]),
-          child: Center(
-            child: Container(
-              height: pieWidth * 0.3,
-              width: pieWidth * 0.3,
-              decoration: BoxDecoration(
-                // color: Colors.white,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(pieWidth / 2),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(-1.5, -1.5),
-                    color: shadowColor,
-                    spreadRadius: 2.0,
-                    // blurRadius: 0,
-                  ),
-                  BoxShadow(
-                    offset: Offset(1.5, 1.5),
-                    color: Colors.white,
-                    spreadRadius: 2.0,
-                    blurRadius: 4,
-                  )
-                ],
-              ),
-            ),
+              BoxShadow(
+                offset: Offset(1.5, 1.5),
+                color: Colors.white,
+                spreadRadius: 2.0,
+                blurRadius: 4,
+              )
+            ],
           ),
         ),
       ),
