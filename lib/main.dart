@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neumorphism_web/neumorphic_bar.dart';
+import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,11 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Neumorphic Bar',
+      title: 'Neumorphic Widgets',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
+      // home: GradientArcPainterDemo(),
     );
   }
 }
@@ -28,36 +30,54 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          NeumorphicBar(
-            width: 200,
-            height: 400,
-            value: 0.5,
-            text: 'Mon',
-          ),
-          NeumorphicBar(
-            width: 200,
-            height: 400,
-            value: 0.9,
-            text: 'Tue',
-            color: Color.fromRGBO(0, 200, 156, 1),
-          ),
-          NeumorphicBar(
-            width: 200,
-            height: 400,
-            value: 0.7,
-            text: 'Wed',
-          ),
-          NeumorphicBar(
-            width: 200,
-            height: 400,
-            value: 1,
-            text: 'Thur',
-          ),
+          BarDays(),
+          SizedBox(height: 40),
+          NeumorphicPie(),
         ],
       ),
+    );
+  }
+}
+
+class BarDays extends StatelessWidget {
+  const BarDays({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        NeumorphicBar(
+          width: 200,
+          height: 400,
+          value: 0.5,
+          text: 'Mon',
+        ),
+        NeumorphicBar(
+          width: 200,
+          height: 400,
+          value: 0.9,
+          text: 'Tue',
+          color: Color.fromRGBO(0, 200, 156, 1),
+        ),
+        NeumorphicBar(
+          width: 200,
+          height: 400,
+          value: 0.7,
+          text: 'Wed',
+        ),
+        NeumorphicBar(
+          width: 200,
+          height: 400,
+          value: 1,
+          text: 'Thur',
+        ),
+      ],
     );
   }
 }

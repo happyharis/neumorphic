@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:neumorphism_web/neumorphic_bar.dart';
+import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
 
-const num pieWidth = 400;
+class MiddleRing extends StatelessWidget {
+  final num pieWidth;
 
-class NeumorphicPie extends StatelessWidget {
+  const MiddleRing({Key key, @required this.pieWidth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       width: pieWidth,
       height: pieWidth,
       decoration: BoxDecoration(
-        color: exteriorShadow,
         borderRadius: BorderRadius.all(
           Radius.circular(pieWidth / 2),
         ),
@@ -41,7 +41,7 @@ class NeumorphicPie extends StatelessWidget {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(-2.5, -2.5),
+                    offset: Offset(-1.5, -1.5),
                     color: shadowColor,
                     spreadRadius: 2.0,
                     // blurRadius: 0,
@@ -49,7 +49,7 @@ class NeumorphicPie extends StatelessWidget {
                   BoxShadow(
                     offset: Offset(1.5, 1.5),
                     color: Colors.white,
-                    // spreadRadius: 2.0,
+                    spreadRadius: 2.0,
                     blurRadius: 4,
                   )
                 ],
@@ -61,6 +61,3 @@ class NeumorphicPie extends StatelessWidget {
     );
   }
 }
-
-final innerColor = Color.fromRGBO(233, 242, 249, 1);
-final shadowColor = Color.fromRGBO(220, 227, 234, 1);
