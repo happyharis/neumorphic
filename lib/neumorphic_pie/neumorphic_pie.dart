@@ -8,14 +8,16 @@ import 'package:neumorphism_web/neumorphic_pie/progress_rings.dart';
 class NeumorphicPie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Outer white circle
     return Container(
       height: 290.0,
       width: 290.0,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white70,
+        color: Colors.white24,
       ),
       child: Center(
+        // Container of the pie chart
         child: Container(
           height: 200.0,
           width: 200.0,
@@ -32,10 +34,7 @@ class NeumorphicPie extends StatelessWidget {
           ),
           child: Stack(
             children: <Widget>[
-              Center(
-                  child: MiddleRing(
-                pieWidth: 300.0,
-              )),
+              Center(child: MiddleRing(width: 300.0)),
               Transform.rotate(
                 angle: pi * 1.6,
                 child: CustomPaint(
