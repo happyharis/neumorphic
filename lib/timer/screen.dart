@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:neumorphism_web/timer/neu_digital_clock.dart';
 import 'package:neumorphism_web/timer/neu_hamburger_button.dart';
+import 'package:neumorphism_web/timer/neu_progress_pie_bar.dart';
 import 'package:neumorphism_web/timer/neu_reset_button.dart';
 import 'package:provider/provider.dart';
 
@@ -17,19 +18,12 @@ class TimerScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 35.0),
           child: Column(
             children: <Widget>[
-              SizedBox(height: MediaQuery.of(context).viewPadding.top),
-              SizedBox(height: 20),
+              SizedBox(height: MediaQuery.of(context).viewPadding.top + 20),
               TimerTitle(),
               SizedBox(height: 60),
               NeuDigitalClock(),
               SizedBox(height: 20),
-              Container(
-                height: 400,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.green,
-                ),
-              ),
+              NeuProgressPieBar(),
               SizedBox(height: 25),
               NeuResetButton(),
             ],
