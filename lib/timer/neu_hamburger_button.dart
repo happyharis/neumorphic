@@ -51,12 +51,14 @@ class NeumorphicContainer extends StatefulWidget {
   final double bevel;
   final Offset blurOffset;
   final Color color;
+  final EdgeInsets padding;
 
   NeumorphicContainer({
     Key key,
     this.child,
     this.bevel = 10.0,
     this.color,
+    this.padding = const EdgeInsets.all(16.0),
   })  : this.blurOffset = Offset(bevel / 2, bevel / 2),
         super(key: key);
 
@@ -86,7 +88,7 @@ class _NeumorphicContainerState extends State<NeumorphicContainer> {
       onPointerUp: _onPointerUp,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        padding: const EdgeInsets.all(16.0),
+        padding: widget.padding,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Color.fromRGBO(227, 237, 247, 1),
