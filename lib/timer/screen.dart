@@ -105,4 +105,5 @@ class TimerService extends ChangeNotifier {
 
     notifyListeners();
   }
+  // source: https://stackoverflow.com/questions/53228993/how-to-implement-persistent-stopwatch-in-flutter
 }
