@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neumorphism_web/timer/neu_progress_painter.dart';
 import 'package:neumorphism_web/timer/screen.dart';
 import 'package:provider/provider.dart';
 
@@ -9,6 +10,10 @@ class NeuProgressPieBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final percentage =
+        Provider.of<TimerService>(context).currentDuration.inMilliseconds /
+            60000 *
+            100;
     return Container(
       height: 400,
       decoration: BoxDecoration(
@@ -31,27 +36,45 @@ class NeuProgressPieBar extends StatelessWidget {
           color: Theme.of(context).backgroundColor,
         ),
       ),
-      child: Center(
-        child: Container(
-          height: 200,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-              begin: FractionalOffset.topCenter,
-              end: FractionalOffset.bottomCenter,
-              colors: [
-                Colors.grey.withOpacity(0.0),
-                Colors.black54,
-              ],
-              stops: [0.95, 1.0],
-            ),
-            border: Border.all(
-              width: 15,
-              color: Theme.of(context).backgroundColor,
+      child: Stack(
+        children: <Widget>[
+          Center(
+            child: SizedBox(
+              height: 250,
+              child: CustomPaint(
+                painter: NeuProgressPainter(
+                  circleWidth: 60,
+                  percentageCompletedCircleColor: Colors.redAccent,
+                  defaultCircleColor: Colors.transparent,
+                  completedPercentage: percentage,
+                ),
+                child: Center(),
+              ),
             ),
           ),
-          child: Center(child: NeuStartButton()),
-        ),
+          Center(
+            child: Container(
+              height: 200,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  begin: FractionalOffset.topCenter,
+                  end: FractionalOffset.bottomCenter,
+                  colors: [
+                    Colors.grey.withOpacity(0.0),
+                    Colors.black54,
+                  ],
+                  stops: [0.95, 1.0],
+                ),
+                border: Border.all(
+                  width: 15,
+                  color: Theme.of(context).backgroundColor,
+                ),
+              ),
+              child: Center(child: NeuStartButton()),
+            ),
+          ),
+        ],
       ),
     );
   }
