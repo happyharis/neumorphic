@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:neumorphism_web/timer/screen.dart';
+import 'package:provider/provider.dart';
 
 class NeuResetButton extends StatefulWidget {
   final double bevel;
@@ -17,7 +19,7 @@ class NeuResetButton extends StatefulWidget {
 class _NeuResetButtonState extends State<NeuResetButton> {
   bool _isPressed = false;
 
-  void _onPointerDown(PointerDownEvent event) {
+  void _onPointerDown() {
     setState(() {
       _isPressed = true;
     });
@@ -32,7 +34,14 @@ class _NeuResetButtonState extends State<NeuResetButton> {
   @override
   Widget build(BuildContext context) {
     return Listener(
-      onPointerDown: _onPointerDown,
+      onPointerDown: (_) {
+        _onPointerDown();
+        final isRunning =
+            Provider.of<TimerService>(context, listen: false).isRunning;
+        Provider.of<TimerService>(context, listen: false).reset();
+        if (isRunning)
+          Provider.of<TimerService>(context, listen: false).start();
+      },
       onPointerUp: _onPointerUp,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
