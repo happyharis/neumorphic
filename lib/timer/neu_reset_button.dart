@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 
 class NeuResetButton extends StatefulWidget {
-  final Widget child;
   final double bevel;
   final Offset blurOffset;
-  final Color color;
-  final EdgeInsets padding;
 
   NeuResetButton({
     Key key,
-    this.child,
     this.bevel = 10.0,
-    this.color,
-    this.padding = const EdgeInsets.all(16.0),
   })  : this.blurOffset = Offset(bevel / 2, bevel / 2),
         super(key: key);
 
@@ -43,7 +37,7 @@ class _NeuResetButtonState extends State<NeuResetButton> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         height: 73,
-        padding: widget.padding,
+        padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: Color.fromRGBO(227, 237, 247, 1),
           borderRadius: BorderRadius.circular(15),
