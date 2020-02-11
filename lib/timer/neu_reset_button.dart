@@ -39,6 +39,7 @@ class _NeuResetButtonState extends State<NeuResetButton> {
         final isRunning =
             Provider.of<TimerService>(context, listen: false).isRunning;
         Provider.of<TimerService>(context, listen: false).reset();
+        // If user press reset button when timer is running, start for them
         if (isRunning)
           Provider.of<TimerService>(context, listen: false).start();
       },
