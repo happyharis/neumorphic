@@ -45,22 +45,59 @@ class NeuDigitalClock extends StatelessWidget {
                 width: 2,
               ),
             ),
-            child: Center(
-              child: Container(
-                // color: Colors.green,
-                height: constraints.maxHeight * 0.47,
-                width: constraints.maxWidth * 0.70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    DigitalNumberWithBG(
-                      height: constraints.maxHeight * 0.35,
-                    ),
-                  ],
-                ),
-              ),
+            child: DigitalClock(
+              height: constraints.maxHeight,
+              width: constraints.maxWidth,
+              hours: 11,
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class DigitalClock extends StatelessWidget {
+  const DigitalClock({
+    Key key,
+    @required this.height,
+    @required this.width,
+    this.hours,
+    this.minutes,
+    this.seconds,
+  }) : super(key: key);
+
+  final num height;
+  final num width;
+  final int hours;
+  final int minutes;
+  final int seconds;
+
+  @override
+  Widget build(BuildContext context) {
+    final isHourTwoDigits = hours.toString().length == 2;
+    final firstDigit = int.parse(hours.toString()[0]);
+    final tenthHour = isHourTwoDigits ? firstDigit : 0;
+    final hour = isHourTwoDigits ? int.parse(hours.toString()[1]) : firstDigit;
+
+    final hourNumber = [
+      DigitalNumberWithBG(
+        height: height * 0.35,
+        value: tenthHour,
+      ),
+      DigitalNumberWithBG(
+        height: height * 0.35,
+        value: hour,
+      ),
+    ];
+    return Center(
+      child: Container(
+        // color: Colors.green,
+        height: height * 0.47,
+        width: width * 0.70,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [...hourNumber],
         ),
       ),
     );
