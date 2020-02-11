@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+
+class NeuResetButton extends StatefulWidget {
+  final Widget child;
+  final double bevel;
+  final Offset blurOffset;
+  final Color color;
+  final EdgeInsets padding;
+
+  NeuResetButton({
+    Key key,
+    this.child,
+    this.bevel = 10.0,
+    this.color,
+    this.padding = const EdgeInsets.all(16.0),
+  })  : this.blurOffset = Offset(bevel / 2, bevel / 2),
+        super(key: key);
+
+  @override
+  _NeuResetButtonState createState() => _NeuResetButtonState();
+}
+
+class _NeuResetButtonState extends State<NeuResetButton> {
+  bool _isPressed = false;
+
+  void _onPointerDown(PointerDownEvent event) {
+    setState(() {
+      _isPressed = true;
+    });
+  }
+
+  void _onPointerUp(PointerUpEvent event) {
+    setState(() {
+      _isPressed = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Listener(
+      onPointerDown: _onPointerDown,
+      onPointerUp: _onPointerUp,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        height: 73,
+        padding: widget.padding,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(227, 237, 247, 1),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: _isPressed
+              ? null
+              : [
+                  BoxShadow(
+                    blurRadius: 15,
+                    offset: -widget.blurOffset,
+                    color: Colors.white,
+                  ),
+                  BoxShadow(
+                    blurRadius: 15,
+                    offset: Offset(10.5, 10.5),
+                    color: Color.fromRGBO(214, 223, 230, 1),
+                  )
+                ],
+        ),
+        child: Center(
+          child: Text(
+            'Reset',
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+extension ColorUtils on Color {
+  Color mix(Color another, double amount) {
+    return Color.lerp(this, another, amount);
+  }
+}
