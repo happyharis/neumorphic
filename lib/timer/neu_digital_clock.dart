@@ -62,9 +62,9 @@ class DigitalClock extends StatelessWidget {
     Key key,
     @required this.height,
     @required this.width,
-    this.hours,
-    this.minutes,
-    this.seconds,
+    this.hours = 0,
+    this.minutes = 0,
+    this.seconds = 0,
   }) : super(key: key);
 
   final num height;
@@ -75,21 +75,9 @@ class DigitalClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isHourTwoDigits = hours.toString().length == 2;
-    final firstDigit = int.parse(hours.toString()[0]);
-    final tenthHour = isHourTwoDigits ? firstDigit : 0;
-    final hour = isHourTwoDigits ? int.parse(hours.toString()[1]) : firstDigit;
-
-    final hourNumber = [
-      DigitalNumberWithBG(
-        height: height * 0.35,
-        value: tenthHour,
-      ),
-      DigitalNumberWithBG(
-        height: height * 0.35,
-        value: hour,
-      ),
-    ];
+    List<DigitalNumberWithBG> hourNumber = createNumberTime(hours);
+    List<DigitalNumberWithBG> minuteNumber = createNumberTime(minutes);
+    List<DigitalNumberWithBG> secondNumber = createNumberTime(seconds);
     return Center(
       child: Container(
         // color: Colors.green,
@@ -97,10 +85,34 @@ class DigitalClock extends StatelessWidget {
         width: width * 0.70,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [...hourNumber],
+          children: [
+            ...hourNumber,
+            ...minuteNumber,
+            ...secondNumber,
+          ],
         ),
       ),
     );
+  }
+
+  List<DigitalNumberWithBG> createNumberTime(int numberTime) {
+    final isNumberTimeTwoDigits = isNumberTwoDigits(numberTime);
+    final firstNumber = firstDigit(numberTime);
+    final tenDigit = isNumberTimeTwoDigits ? firstNumber : 0;
+    final digit = isNumberTimeTwoDigits
+        ? int.parse(numberTime.toString()[1])
+        : firstNumber;
+
+    return [
+      DigitalNumberWithBG(
+        height: height * 0.35,
+        value: tenDigit,
+      ),
+      DigitalNumberWithBG(
+        height: height * 0.35,
+        value: digit,
+      ),
+    ];
   }
 }
 
@@ -140,4 +152,12 @@ class DigitalNumberWithBG extends StatelessWidget {
       ],
     );
   }
+}
+
+bool isNumberTwoDigits(int number) {
+  return number.toString().length == 2;
+}
+
+int firstDigit(int number) {
+  return int.parse(number.toString()[0]);
 }
