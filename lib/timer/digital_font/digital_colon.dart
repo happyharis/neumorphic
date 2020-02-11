@@ -11,9 +11,9 @@ class DigitalColon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new CustomPaint(
-      size: new Size(height / 2.0, height),
-      painter: new _DigitalColonPainter(height, color),
+    return CustomPaint(
+      size: Size(height / 2.0, height),
+      painter: _DigitalColonPainter(height, color),
     );
   }
 }
@@ -34,13 +34,13 @@ class _DigitalColonPainter extends CustomPainter {
     final double width = height / 2;
     final double thickness = width / 5;
 
-    final Paint paint = new Paint()
+    final Paint paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill;
 
     // Top dot
     canvas.drawRect(
-        new Rect.fromLTWH(
+        Rect.fromLTWH(
           width / 2 - thickness / 2,
           height / 3 - thickness / 2,
           thickness,
@@ -49,7 +49,7 @@ class _DigitalColonPainter extends CustomPainter {
         paint);
     // Bottom dot
     canvas.drawRect(
-        new Rect.fromLTWH(
+        Rect.fromLTWH(
           width / 2 - thickness / 2,
           height * 2 / 3 - thickness / 2,
           thickness,
