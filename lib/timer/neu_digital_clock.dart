@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'digital_font/digital_number.dart';
+
 class NeuDigitalClock extends StatelessWidget {
   const NeuDigitalClock({
     Key key,
@@ -7,6 +9,7 @@ class NeuDigitalClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Outer white container
     return Container(
       height: 145,
       decoration: BoxDecoration(
@@ -25,6 +28,7 @@ class NeuDigitalClock extends StatelessWidget {
           )
         ],
       ),
+      // Digital green background
       child: Center(
         child: LayoutBuilder(
           builder: (context, constraints) => Container(
@@ -41,9 +45,62 @@ class NeuDigitalClock extends StatelessWidget {
                 width: 2,
               ),
             ),
+            child: Center(
+              child: Container(
+                // color: Colors.green,
+                height: constraints.maxHeight * 0.47,
+                width: constraints.maxWidth * 0.70,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DigitalNumberWithBG(
+                      height: constraints.maxHeight * 0.35,
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class DigitalNumberWithBG extends StatelessWidget {
+  const DigitalNumberWithBG({
+    Key key,
+    this.value = 0,
+    this.padLeft,
+    this.height,
+    this.color,
+    this.backgroundValue = 8,
+  }) : super(key: key);
+
+  final int value;
+  final int backgroundValue;
+  final int padLeft;
+  final double height;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        //Foreground
+        DigitalNumber(
+          value: value,
+          color: Colors.black,
+          height: height,
+        ),
+
+        // Background
+        DigitalNumber(
+          value: backgroundValue,
+          color: Colors.black12,
+          height: height,
+        ),
+      ],
     );
   }
 }
