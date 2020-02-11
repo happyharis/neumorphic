@@ -16,10 +16,17 @@ class MyApp extends StatelessWidget {
         backgroundColor: Color.fromRGBO(231, 240, 247, 1),
         scaffoldBackgroundColor: Color.fromRGBO(231, 240, 247, 1),
         textTheme: TextTheme(
+          headline1: GoogleFonts.dMSans(
+            textStyle: TextStyle(
+              fontSize: 43,
+              fontWeight: FontWeight.w900,
+              color: Color.fromRGBO(49, 68, 105, 1),
+            ),
+          ),
           headline4: GoogleFonts.dMSans(
             textStyle: TextStyle(
               fontSize: 28,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w800,
               color: Color.fromRGBO(49, 68, 105, 1),
             ),
           ),
