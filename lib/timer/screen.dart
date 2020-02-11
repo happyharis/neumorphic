@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:neumorphism_web/neu_hamburger_button.dart';
+import 'package:neumorphism_web/timer/neu_hamburger_button.dart';
+import 'package:neumorphism_web/timer/neu_reset_button.dart';
 
 class TimerScreen extends StatelessWidget {
   @override
@@ -27,18 +28,7 @@ class TimerScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 25),
-            Container(
-              height: 73,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                // color: Colors.green,
-              ),
-              child: Center(
-                  child: Text(
-                'Reset',
-                style: Theme.of(context).textTheme.headline4,
-              )),
-            ),
+            NeuResetButton(),
           ],
         ),
       ),
@@ -57,13 +47,7 @@ class TimerTitle extends StatelessWidget {
       children: <Widget>[
         Text(
           'Timer',
-          style: GoogleFonts.dMSans(
-            textStyle: TextStyle(
-              fontSize: 43,
-              fontWeight: FontWeight.w900,
-              color: Color.fromRGBO(49, 68, 105, 1),
-            ),
-          ),
+          style: Theme.of(context).textTheme.headline1,
         ),
         Spacer(),
         NeuHamburgerButton()
