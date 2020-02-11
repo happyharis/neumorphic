@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:neumorphism_web/timer/neu_digital_clock.dart';
 import 'package:neumorphism_web/timer/neu_hamburger_button.dart';
 import 'package:neumorphism_web/timer/neu_reset_button.dart';
 
@@ -15,10 +15,7 @@ class TimerScreen extends StatelessWidget {
             SizedBox(height: 20),
             TimerTitle(),
             SizedBox(height: 60),
-            Container(
-              height: 145,
-              color: Colors.green,
-            ),
+            NeuDigitalClock(),
             SizedBox(height: 20),
             Container(
               height: 400,
