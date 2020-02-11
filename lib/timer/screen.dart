@@ -5,9 +5,8 @@ import 'package:neumorphism_web/neu_hamburger_button.dart';
 class TimerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Color.fromRGBO(231, 240, 247, 1),
-      child: Padding(
+    return Scaffold(
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 35.0),
         child: Column(
           children: <Widget>[
@@ -30,7 +29,15 @@ class TimerScreen extends StatelessWidget {
             SizedBox(height: 25),
             Container(
               height: 73,
-              color: Colors.green,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                // color: Colors.green,
+              ),
+              child: Center(
+                  child: Text(
+                'Reset',
+                style: Theme.of(context).textTheme.headline4,
+              )),
             ),
           ],
         ),
@@ -50,7 +57,7 @@ class TimerTitle extends StatelessWidget {
       children: <Widget>[
         Text(
           'Timer',
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.dMSans(
             textStyle: TextStyle(
               fontSize: 43,
               fontWeight: FontWeight.w900,
