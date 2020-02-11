@@ -108,11 +108,12 @@ class DigitalClock extends StatelessWidget {
   }
 
   List<DigitalNumberWithBG> createNumberTime(int numberTime) {
-    final isNumberTimeTwoDigits = isNumberTwoDigits(numberTime);
-    final firstNumber = firstDigit(numberTime);
+    final parsedNumberTime = numberTime % 60;
+    final isNumberTimeTwoDigits = isNumberTwoDigits(parsedNumberTime);
+    final firstNumber = firstDigit(parsedNumberTime);
     final tenDigit = isNumberTimeTwoDigits ? firstNumber : 0;
     final digit = isNumberTimeTwoDigits
-        ? int.parse(numberTime.toString()[1])
+        ? int.parse(parsedNumberTime.toString()[1])
         : firstNumber;
 
     return [
