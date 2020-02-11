@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:neumorphism_web/timer/digital_font/digital_colon.dart';
+import 'package:neumorphism_web/timer/screen.dart';
+import 'package:provider/provider.dart';
 
 import 'digital_font/digital_number.dart';
 
@@ -11,6 +13,11 @@ class NeuDigitalClock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Outer white container
+    final seconds =
+        Provider.of<TimerService>(context).currentDuration.inSeconds;
+    final minutes =
+        Provider.of<TimerService>(context).currentDuration.inMinutes;
+    final hours = Provider.of<TimerService>(context).currentDuration.inHours;
     return Container(
       height: 145,
       decoration: BoxDecoration(
@@ -49,7 +56,9 @@ class NeuDigitalClock extends StatelessWidget {
             child: DigitalClock(
               height: constraints.maxHeight,
               width: constraints.maxWidth,
-              hours: 11,
+              seconds: seconds,
+              minutes: minutes,
+              hours: hours,
             ),
           ),
         ),
