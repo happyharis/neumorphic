@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neumorphism_web/timer/digital_font/digital_colon.dart';
 
 import 'digital_font/digital_number.dart';
 
@@ -87,7 +88,9 @@ class DigitalClock extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ...hourNumber,
+            DigitalColon(height: height * 0.30, color: Colors.black87),
             ...minuteNumber,
+            DigitalColon(height: height * 0.30, color: Colors.black87),
             ...secondNumber,
           ],
         ),
