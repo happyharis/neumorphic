@@ -12,12 +12,11 @@ class NeuDigitalClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentDuration = Provider.of<TimerService>(context).currentDuration;
+    final seconds = currentDuration.inSeconds;
+    final minutes = currentDuration.inMinutes;
+    final hours = currentDuration.inHours;
     // Outer white container
-    final seconds =
-        Provider.of<TimerService>(context).currentDuration.inSeconds;
-    final minutes =
-        Provider.of<TimerService>(context).currentDuration.inMinutes;
-    final hours = Provider.of<TimerService>(context).currentDuration.inHours;
     return Container(
       height: 145,
       decoration: BoxDecoration(
