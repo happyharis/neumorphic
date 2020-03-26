@@ -4,6 +4,7 @@ import 'package:neumorphism_web/neumorphic_bar.dart';
 import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
 
 import 'package:neumorphism_web/timer/screen.dart';
+// import 'package:neumorphism_web/example.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Neumorphic Widgets',
       theme: ThemeData(
         backgroundColor: Color.fromRGBO(231, 240, 247, 1),
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: TimerScreen(),
-      // home: GradientArcPainterDemo(),
+      // home: MyHomePage(),
     );
   }
 }
