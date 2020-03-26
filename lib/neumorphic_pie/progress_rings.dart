@@ -53,8 +53,8 @@ class ProgressRings extends CustomPainter {
       false,
       paint(
         gradient,
-        startAngle: gradientStartAngle,
-        endAngle: gradientEndAngle,
+        startAngle: 3 * pi / 2,
+        endAngle: 4 * pi / 2,
       ),
     );
   }
