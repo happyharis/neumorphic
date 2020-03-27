@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:neumorphism_web/neumorphic_bar.dart';
+import 'package:neumorphism_web/neumorphic_bar/neumorphic_bar.dart';
+import 'package:neumorphism_web/neumorphic_expenses/monthly_expenses_view.dart';
 import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
 
 import 'package:neumorphism_web/timer/screen.dart';
-// import 'package:neumorphism_web/example.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: TimerScreen(),
-      // home: MyHomePage(),
+      home: MontlyExpensesView(),
+      // home: TimerScreen(),
     );
   }
 }
