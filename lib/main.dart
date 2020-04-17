@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neumorphism_web/calculator/calculator_view.dart';
 import 'package:neumorphism_web/neumorphic_bar/neumorphic_bar.dart';
 import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
-import 'package:neumorphism_web/neumorphic_start_page/neumophic_start_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,14 +16,14 @@ class MyApp extends StatelessWidget {
         backgroundColor: Color.fromRGBO(231, 240, 247, 1),
         scaffoldBackgroundColor: Color.fromRGBO(231, 240, 247, 1),
         textTheme: TextTheme(
-          headline1: GoogleFonts.dMSans(
+          headline1: GoogleFonts.dmSans(
             textStyle: TextStyle(
               fontSize: 43,
               fontWeight: FontWeight.w900,
               color: Color.fromRGBO(49, 68, 105, 1),
             ),
           ),
-          headline4: GoogleFonts.dMSans(
+          headline4: GoogleFonts.dmSans(
             textStyle: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.w800,
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: NeumorphicStartPage(),
+      home: CalculatorView(),
     );
   }
 }
