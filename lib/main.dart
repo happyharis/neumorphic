@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         canvasColor: kDarkBackgroundColour,
       ),
       theme: ThemeData(
-        backgroundColor: Color.fromRGBO(231, 240, 247, 1),
         canvasColor: kBackgroundColour,
+        backgroundColor: Color.fromRGBO(231, 240, 247, 1),
         scaffoldBackgroundColor: Color.fromRGBO(231, 240, 247, 1),
         textTheme: TextTheme(
           headline1: GoogleFonts.dmSans(
@@ -43,11 +43,9 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context) {
           final brightnessValue = MediaQuery.of(context).platformBrightness;
           bool isDark = brightnessValue == Brightness.dark;
+          final theme = isDark ? darkNeumorphicTheme : lightNeumorphicTheme;
           return ProxyProvider0<NeumorphicTheme>(
-              update: (_, __) {
-                return isDark ? darkNeumorphicTheme : lightNeumorphicTheme;
-              },
-              child: CalculatorView());
+              update: (_, __) => theme, child: CalculatorView());
         },
       ),
     );

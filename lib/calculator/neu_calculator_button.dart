@@ -40,6 +40,7 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
     final squareSideLength = width / 5;
     final buttonWidth = squareSideLength * (widget.isPill ? 2.2 : 1);
     final buttonSize = Size(buttonWidth, squareSideLength);
+
     final innerShadow = ConcaveDecoration(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(buttonSize.width),
@@ -47,12 +48,14 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
       colors: neumorphicTheme.innerShadowColors,
       depression: 10,
     );
-    var outerShadow = BoxDecoration(
+
+    final outerShadow = BoxDecoration(
       border: Border.all(color: neumorphicTheme.borderColor),
       borderRadius: BorderRadius.circular(buttonSize.width),
       color: neumorphicTheme.buttonColor,
       boxShadow: neumorphicTheme.outerShadow,
     );
+
     return SizedBox(
       height: buttonSize.height,
       width: buttonSize.width,
