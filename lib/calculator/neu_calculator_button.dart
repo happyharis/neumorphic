@@ -90,34 +90,4 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
       ),
     );
   }
-
-  List<BoxShadow> showShadow() {
-    return [
-      BoxShadow(
-        blurRadius: 15,
-        offset: -Offset(5, 5),
-        color: Colors.white,
-      ),
-      BoxShadow(
-        blurRadius: 15,
-        offset: Offset(4.5, 4.5),
-        color: kDarkShadow,
-      )
-    ];
-  }
-
-  List<BoxShadow> showInnerShadow() {
-    return [
-      BoxShadow(
-        blurRadius: 15,
-        offset: Offset(5, 5),
-        color: Colors.white,
-      ),
-      BoxShadow(
-        blurRadius: 15,
-        offset: -Offset(4.5, 4.5),
-        color: kDarkShadow,
-      ),
-    ];
-  }
 }
