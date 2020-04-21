@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neumorphism_web/calculator/neu_calculator_button.dart';
+import 'package:neumorphism_web/calculator/neumorphic_theme.dart';
 
 class CalculatorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color.fromRGBO(239, 238, 238, 1),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
@@ -109,6 +109,3 @@ class ButtonRow extends StatelessWidget {
     );
   }
 }
-
-final kOrange = Color.fromRGBO(238, 134, 48, 1); // rgb(238, 134, 48)
-final kDarkShadow = Color.fromRGBO(216, 213, 208, 1); // rgb(216, 213, 208)

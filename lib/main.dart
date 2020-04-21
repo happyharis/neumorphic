@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neumorphism_web/calculator/calculator_view.dart';
+import 'package:neumorphism_web/calculator/neumorphic_theme.dart';
 import 'package:neumorphism_web/neumorphic_bar/neumorphic_bar.dart';
 import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,8 +14,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Widgets',
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        canvasColor: kDarkBackgroundColour,
+      ),
       theme: ThemeData(
         backgroundColor: Color.fromRGBO(231, 240, 247, 1),
+        canvasColor: kBackgroundColour,
         scaffoldBackgroundColor: Color.fromRGBO(231, 240, 247, 1),
         textTheme: TextTheme(
           headline1: GoogleFonts.dmSans(
@@ -32,7 +39,17 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: CalculatorView(),
+      home: Builder(
+        builder: (BuildContext context) {
+          final brightnessValue = MediaQuery.of(context).platformBrightness;
+          bool isDark = brightnessValue == Brightness.dark;
+          return ProxyProvider0<NeumorphicTheme>(
+              update: (_, __) {
+                return isDark ? darkNeumorphicTheme : lightNeumorphicTheme;
+              },
+              child: CalculatorView());
+        },
+      ),
     );
   }
 }

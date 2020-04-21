@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:neumorphism_web/calculator/calculator_view.dart';
 import 'package:neumorphism_web/calculator/concave_decoration.dart';
+import 'package:neumorphism_web/calculator/neumorphic_theme.dart';
+import 'package:provider/provider.dart';
 
 class NeuCalculatorButton extends StatefulWidget {
   final String text;
@@ -34,6 +35,7 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
 
   @override
   Widget build(BuildContext context) {
+    final neumorphicTheme = Provider.of<NeumorphicTheme>(context);
     final width = MediaQuery.of(context).size.width;
     final squareSideLength = width / 5;
     final buttonWidth = squareSideLength * (widget.isPill ? 2.2 : 1);
@@ -42,24 +44,14 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(buttonSize.width),
       ),
-      colors: [kDarkShadow, Colors.white],
+      colors: neumorphicTheme.innerShadowColors,
       depression: 10,
     );
     var outerShadow = BoxDecoration(
+      border: Border.all(color: neumorphicTheme.borderColor),
       borderRadius: BorderRadius.circular(buttonSize.width),
-      color: Color.fromRGBO(239, 238, 238, 1),
-      boxShadow: [
-        BoxShadow(
-          blurRadius: 15,
-          offset: -Offset(5, 5),
-          color: Colors.white,
-        ),
-        BoxShadow(
-          blurRadius: 15,
-          offset: Offset(4.5, 4.5),
-          color: kDarkShadow,
-        )
-      ],
+      color: neumorphicTheme.buttonColor,
+      boxShadow: neumorphicTheme.outerShadow,
     );
     return SizedBox(
       height: buttonSize.height,
@@ -81,7 +73,8 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
                 style: GoogleFonts.montserrat(
                   fontSize: widget.textSize ?? 30,
                   fontWeight: FontWeight.w200,
-                  color: widget.textColor ?? Colors.black,
+                  color: widget.textColor ??
+                      Theme.of(context).textTheme.bodyText1.color,
                 ),
               ),
             ),
