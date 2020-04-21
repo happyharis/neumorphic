@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neumorphism_web/calculator/calculator_view.dart';
+import 'package:neumorphism_web/calculator/concave_decoration.dart';
 
 class NeuCalculatorButton extends StatefulWidget {
   final String text;
@@ -37,6 +38,29 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
     final squareSideLength = width / 5;
     final buttonWidth = squareSideLength * (widget.isPill ? 2.2 : 1);
     final buttonSize = Size(buttonWidth, squareSideLength);
+    final innerShadow = ConcaveDecoration(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(buttonSize.width),
+      ),
+      colors: [kDarkShadow, Colors.white],
+      depression: 10,
+    );
+    var outerShadow = BoxDecoration(
+      borderRadius: BorderRadius.circular(buttonSize.width),
+      color: Color.fromRGBO(239, 238, 238, 1),
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 15,
+          offset: -Offset(5, 5),
+          color: Colors.white,
+        ),
+        BoxShadow(
+          blurRadius: 15,
+          offset: Offset(4.5, 4.5),
+          color: kDarkShadow,
+        )
+      ],
+    );
     return SizedBox(
       height: buttonSize.height,
       width: buttonSize.width,
@@ -48,11 +72,7 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
             AnimatedContainer(
               duration: const Duration(milliseconds: 50),
               padding: EdgeInsets.all(width / 12),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(buttonSize.width),
-                color: Color.fromRGBO(239, 238, 238, 1),
-                boxShadow: _isPressed ? showInnerShadow() : showShadow(),
-              ),
+              decoration: _isPressed ? innerShadow : outerShadow,
             ),
             Align(
               alignment: Alignment(widget.isPill ? -0.6 : 0, 0),
