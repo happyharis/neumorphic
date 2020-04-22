@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neumorphism_web/calculator/calculator_logic.dart';
 import 'package:neumorphism_web/calculator/calculator_view.dart';
 import 'package:neumorphism_web/calculator/neumorphic_theme.dart';
 import 'package:neumorphism_web/neumorphic_bar/neumorphic_bar.dart';
@@ -44,8 +45,19 @@ class MyApp extends StatelessWidget {
           final brightnessValue = MediaQuery.of(context).platformBrightness;
           bool isDark = brightnessValue == Brightness.dark;
           final theme = isDark ? darkNeumorphicTheme : lightNeumorphicTheme;
-          return ProxyProvider0<NeumorphicTheme>(
-              update: (_, __) => theme, child: CalculatorView());
+          // Intro, need to show the first use case: 1+1 = 2 (iphone case)
+          // part of -1 Since got 2 providers, use multiprovider
+          return MultiProvider(
+            providers: [
+              ProxyProvider0<NeumorphicTheme>(update: (_, __) => theme),
+              // part of -1. Explain wanted to do on mobx and did not pursue
+              // and how it is not relevant. However, very good async stuff,
+              // to the non-async part. Yeah. So, use what's availabe, which
+              // is change notifier and change notifier provider
+              ChangeNotifierProvider<Calculator>(create: (_) => Calculator())
+            ],
+            child: CalculatorView(),
+          );
         },
       ),
     );

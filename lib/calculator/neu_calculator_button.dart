@@ -9,6 +9,8 @@ class NeuCalculatorButton extends StatefulWidget {
   final Color textColor;
   final double textSize;
   final bool isPill;
+  final Function onPressed;
+  final bool isChosen;
 
   NeuCalculatorButton({
     Key key,
@@ -16,6 +18,8 @@ class NeuCalculatorButton extends StatefulWidget {
     this.textColor,
     this.textSize,
     this.isPill = false,
+    this.onPressed,
+    this.isChosen = false,
   }) : super(key: key);
 
   @override
@@ -25,12 +29,21 @@ class NeuCalculatorButton extends StatefulWidget {
 class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
   bool _isPressed = false;
 
+  @override
+  void didUpdateWidget(NeuCalculatorButton oldWidget) {
+    if (oldWidget.isChosen != widget.isChosen) {
+      setState(() => _isPressed = widget.isChosen);
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
   void _onPointerDown(PointerDownEvent event) {
     setState(() => _isPressed = true);
+    widget.onPressed != null ? widget.onPressed() : print('');
   }
 
   void _onPointerUp(PointerUpEvent event) {
-    setState(() => _isPressed = false);
+    setState(() => _isPressed = widget.isChosen);
   }
 
   @override
