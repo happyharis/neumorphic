@@ -29,8 +29,14 @@ class CalculatorView extends StatelessWidget {
                 text: 'AC',
                 onPressed: calculator.reset,
               ),
-              NeuCalculatorButton(text: '+/-'),
-              NeuCalculatorButton(text: '%'),
+              NeuCalculatorButton(
+                text: '+/-',
+                onPressed: () {},
+              ),
+              NeuCalculatorButton(
+                text: '%',
+                onPressed: () {},
+              ),
               NeuCalculatorButton(
                 text: '÷',
                 textColor: kOrange,
@@ -114,7 +120,10 @@ class CalculatorView extends StatelessWidget {
                   onPressed: () => calculator.setValue(0),
                   isPill: true,
                 ),
-                NeuCalculatorButton(text: '.'),
+                NeuCalculatorButton(
+                  text: '.',
+                  onPressed: () {},
+                ),
                 NeuCalculatorButton(
                   text: '=',
                   textColor: kOrange,

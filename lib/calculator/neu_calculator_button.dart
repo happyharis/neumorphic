@@ -5,22 +5,22 @@ import 'package:neumorphism_web/calculator/neumorphic_theme.dart';
 import 'package:provider/provider.dart';
 
 class NeuCalculatorButton extends StatefulWidget {
-  final String text;
-  final Color textColor;
-  final double textSize;
-  final bool isPill;
-  final Function onPressed;
-  final bool isChosen;
-
   NeuCalculatorButton({
     Key key,
     @required this.text,
     this.textColor,
     this.textSize,
     this.isPill = false,
-    this.onPressed,
+    @required this.onPressed,
     this.isChosen = false,
   }) : super(key: key);
+
+  final bool isChosen;
+  final bool isPill;
+  final VoidCallback onPressed;
+  final String text;
+  final Color textColor;
+  final double textSize;
 
   @override
   _NeuCalculatorButtonState createState() => _NeuCalculatorButtonState();
@@ -39,7 +39,7 @@ class _NeuCalculatorButtonState extends State<NeuCalculatorButton> {
 
   void _onPointerDown(PointerDownEvent event) {
     setState(() => _isPressed = true);
-    widget.onPressed != null ? widget.onPressed() : print('');
+    widget.onPressed();
   }
 
   void _onPointerUp(PointerUpEvent event) {
