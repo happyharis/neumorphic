@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class NeuProgressPieBar extends StatelessWidget {
   const NeuProgressPieBar({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class NeuProgressPieBar extends StatelessWidget {
         ],
         border: Border.all(
           width: 15,
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).scaffoldBackgroundColor,
         ),
       ),
       child: Stack(
@@ -65,7 +65,7 @@ class NeuProgressPieBar extends StatelessWidget {
                 ),
                 border: Border.all(
                   width: 15,
-                  color: Theme.of(context).backgroundColor,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                 ),
               ),
               child: Center(child: NeuStartButton()),
@@ -82,7 +82,7 @@ class NeuStartButton extends StatefulWidget {
   final Offset blurOffset;
 
   NeuStartButton({
-    Key key,
+    Key? key,
     this.bevel = 10.0,
   })  : this.blurOffset = Offset(bevel / 2, bevel / 2),
         super(key: key);
@@ -151,11 +151,5 @@ class _NeuStartButtonState extends State<NeuStartButton> {
         )),
       ),
     );
-  }
-}
-
-extension ColorUtils on Color {
-  Color mix(Color another, double amount) {
-    return Color.lerp(this, another, amount);
   }
 }

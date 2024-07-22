@@ -7,15 +7,15 @@ class ProgressRings extends CustomPainter {
   final double completedPercentage;
   final double circleWidth;
   final List<Color> gradient;
-  final num gradientStartAngle;
-  final num gradientEndAngle;
+  final double gradientStartAngle;
+  final double gradientEndAngle;
   final double progressStartAngle;
   final double lengthToRemove;
 
   ProgressRings({
-    this.completedPercentage,
-    this.circleWidth,
-    this.gradient,
+    this.completedPercentage = 1.0,
+    required this.circleWidth,
+    required this.gradient,
     this.gradientStartAngle = 3 * pi / 2,
     this.gradientEndAngle = 4 * pi / 2,
     this.progressStartAngle = 0,

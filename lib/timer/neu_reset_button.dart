@@ -7,7 +7,7 @@ class NeuResetButton extends StatefulWidget {
   final Offset blurOffset;
 
   NeuResetButton({
-    Key key,
+    Key? key,
     this.bevel = 10.0,
   })  : this.blurOffset = Offset(bevel / 2, bevel / 2),
         super(key: key);
@@ -69,16 +69,10 @@ class _NeuResetButtonState extends State<NeuResetButton> {
         child: Center(
           child: Text(
             'Reset',
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
       ),
     );
-  }
-}
-
-extension ColorUtils on Color {
-  Color mix(Color another, double amount) {
-    return Color.lerp(this, another, amount);
   }
 }

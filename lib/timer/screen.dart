@@ -36,7 +36,7 @@ class TimerScreen extends StatelessWidget {
 
 class TimerTitle extends StatelessWidget {
   const TimerTitle({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -45,7 +45,7 @@ class TimerTitle extends StatelessWidget {
       children: <Widget>[
         Text(
           'Timer',
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.displayLarge,
         ),
         Spacer(),
         NeuHamburgerButton()
@@ -55,8 +55,8 @@ class TimerTitle extends StatelessWidget {
 }
 
 class TimerService extends ChangeNotifier {
-  Stopwatch _watch;
-  Timer _timer;
+  late Stopwatch _watch;
+  Timer? _timer;
 
   Duration get currentDuration => _currentDuration;
   Duration _currentDuration = Duration.zero;

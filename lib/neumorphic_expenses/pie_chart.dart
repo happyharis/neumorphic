@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class PieChart extends CustomPainter {
-  PieChart({@required this.categories, @required this.width});
+  PieChart({required this.categories, required this.width});
 
   final List<Category> categories;
   final double width;
@@ -53,7 +53,7 @@ class PieChart extends CustomPainter {
 }
 
 class Category {
-  Category(this.name, {@required this.amount});
+  Category(this.name, {required this.amount});
 
   final String name;
   final double amount;

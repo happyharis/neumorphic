@@ -5,9 +5,11 @@ import 'package:neumorphism_web/calculator/calculator_view.dart';
 import 'package:neumorphism_web/calculator/neumorphic_theme.dart';
 import 'package:neumorphism_web/neumorphic_bar/neumorphic_bar.dart';
 import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
+import 'package:neumorphism_web/timer/screen.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ChangeNotifierProvider<Calculator>(
+    create: (_) => Calculator(), child: MyApp()));
 
 class MyApp extends StatelessWidget {
   @override
@@ -15,48 +17,48 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Widgets',
+      theme: ThemeData(
+        canvasColor: kBackgroundColour,
+        scaffoldBackgroundColor: kScaffoldBackgroundColour,
+        textTheme: GoogleFonts.dmSansTextTheme(),
+      ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         canvasColor: kDarkBackgroundColour,
       ),
-      theme: ThemeData(
-        canvasColor: kBackgroundColour,
-        backgroundColor: Color.fromRGBO(231, 240, 247, 1),
-        scaffoldBackgroundColor: Color.fromRGBO(231, 240, 247, 1),
-        textTheme: TextTheme(
-          headline1: GoogleFonts.dmSans(
-            textStyle: TextStyle(
-              fontSize: 43,
-              fontWeight: FontWeight.w900,
-              color: Color.fromRGBO(49, 68, 105, 1),
-            ),
-          ),
-          headline4: GoogleFonts.dmSans(
-            textStyle: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w800,
-              color: Color.fromRGBO(49, 68, 105, 1),
-            ),
-          ),
-        ),
-      ),
       home: Builder(
         builder: (BuildContext context) {
-          final brightnessValue = MediaQuery.of(context).platformBrightness;
-          bool isDark = brightnessValue == Brightness.dark;
-          final theme = isDark ? darkNeumorphicTheme : lightNeumorphicTheme;
-          // Intro, need to show the first use case: 1+1 = 2 (iphone case)
-          // part of -1 Since got 2 providers, use multiprovider
-          return MultiProvider(
-            providers: [
-              ProxyProvider0<NeumorphicTheme>(update: (_, __) => theme),
-              // part of -1. Explain wanted to do on mobx and did not pursue
-              // and how it is not relevant. However, very good async stuff,
-              // to the non-async part. Yeah. So, use what's availabe, which
-              // is change notifier and change notifier provider
-              ChangeNotifierProvider<Calculator>(create: (_) => Calculator())
-            ],
-            child: CalculatorView(),
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Neumorphic Widgets'),
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            ),
+            body: Column(
+              children: [
+                ListTile(
+                    leading: Icon(Icons.calculate),
+                    title: Text('Calcualtor'),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CalculatorView()))),
+                ListTile(
+                    leading: Icon(Icons.timer),
+                    title: Text('Timer'),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TimerScreen()))),
+                ListTile(
+                    leading: Icon(Icons.pie_chart),
+                    title: Text('Pie and chart'),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()))),
+              ],
+            ),
           );
         },
       ),
@@ -65,7 +67,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -90,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class BarDays extends StatelessWidget {
   const BarDays({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

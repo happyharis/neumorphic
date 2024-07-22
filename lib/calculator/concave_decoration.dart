@@ -1,5 +1,4 @@
 import 'dart:ui' as ui;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ConcaveDecoration extends Decoration {
@@ -8,15 +7,14 @@ class ConcaveDecoration extends Decoration {
   final List<Color> colors;
 
   ConcaveDecoration({
-    @required this.shape,
-    @required this.depression,
-    this.colors,
-  })  : assert(shape != null),
-        assert(depression >= 0),
-        assert(colors == null || colors.length == 2);
+    required this.shape,
+    required this.depression,
+    this.colors = const [Colors.black87, Colors.white],
+  })  : assert(depression >= 0),
+        assert(colors.length == 2);
 
   @override
-  BoxPainter createBoxPainter([onChanged]) =>
+  BoxPainter createBoxPainter([void Function()? onChanged]) =>
       _ConcaveDecorationPainter(shape, depression, colors);
 
   @override
@@ -28,14 +26,12 @@ class _ConcaveDecorationPainter extends BoxPainter {
   double depression;
   List<Color> colors;
 
-  _ConcaveDecorationPainter(this.shape, this.depression, this.colors) {
-    colors ??= [Colors.black87, Colors.white];
-  }
+  _ConcaveDecorationPainter(this.shape, this.depression, this.colors) {}
 
   @override
   void paint(
       ui.Canvas canvas, ui.Offset offset, ImageConfiguration configuration) {
-    final rect = offset & configuration.size;
+    final rect = offset & (configuration.size ?? Size(0, 0));
     final shapePath = shape.getOuterPath(rect);
 
     final delta = 16 / rect.longestSide;

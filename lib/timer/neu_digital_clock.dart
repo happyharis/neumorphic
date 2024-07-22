@@ -7,7 +7,7 @@ import 'digital_font/digital_number.dart';
 
 class NeuDigitalClock extends StatelessWidget {
   const NeuDigitalClock({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -68,9 +68,9 @@ class NeuDigitalClock extends StatelessWidget {
 
 class DigitalClock extends StatelessWidget {
   const DigitalClock({
-    Key key,
-    @required this.height,
-    @required this.width,
+    Key? key,
+    required this.height,
+    required this.width,
     this.hours = 0,
     this.minutes = 0,
     this.seconds = 0,
@@ -130,19 +130,15 @@ class DigitalClock extends StatelessWidget {
 
 class DigitalNumberWithBG extends StatelessWidget {
   const DigitalNumberWithBG({
-    Key key,
+    Key? key,
     this.value = 0,
-    this.padLeft,
-    this.height,
-    this.color,
+    required this.height,
     this.backgroundValue = 8,
   }) : super(key: key);
 
   final int value;
   final int backgroundValue;
-  final int padLeft;
   final double height;
-  final Color color;
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:neumorphism_web/neumorphic_expenses/pie_chart.dart';
 
 class CategoriesRow extends StatelessWidget {
   const CategoriesRow({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -24,9 +24,9 @@ class CategoriesRow extends StatelessWidget {
 
 class ExpenseCategory extends StatelessWidget {
   const ExpenseCategory({
-    Key key,
-    @required this.index,
-    @required this.text,
+    Key? key,
+    required this.index,
+    required this.text,
   }) : super(key: key);
 
   final int index;

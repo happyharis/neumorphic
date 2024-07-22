@@ -4,15 +4,13 @@ import 'dart:math';
 class NeuProgressPainter extends CustomPainter {
   //
   Color defaultCircleColor;
-  Color percentageCompletedCircleColor;
   double completedPercentage;
   double circleWidth;
 
   NeuProgressPainter(
-      {this.defaultCircleColor,
-      this.percentageCompletedCircleColor,
-      this.completedPercentage,
-      this.circleWidth});
+      {required this.defaultCircleColor,
+      required this.completedPercentage,
+      required this.circleWidth});
 
   getPaint(Color color) {
     return Paint()

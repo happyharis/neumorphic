@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 class NeuHamburgerButton extends StatelessWidget {
   const NeuHamburgerButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return NeumorphicContainer(
-      color: Color.fromRGBO(227, 237, 247, 1),
       child: SizedBox(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -50,14 +49,12 @@ class NeumorphicContainer extends StatefulWidget {
   final Widget child;
   final double bevel;
   final Offset blurOffset;
-  final Color color;
   final EdgeInsets padding;
 
   NeumorphicContainer({
-    Key key,
-    this.child,
+    Key? key,
+    required this.child,
     this.bevel = 10.0,
-    this.color,
     this.padding = const EdgeInsets.all(16.0),
   })  : this.blurOffset = Offset(bevel / 2, bevel / 2),
         super(key: key);
@@ -110,11 +107,5 @@ class _NeumorphicContainerState extends State<NeumorphicContainer> {
         child: widget.child,
       ),
     );
-  }
-}
-
-extension ColorUtils on Color {
-  Color mix(Color another, double amount) {
-    return Color.lerp(this, another, amount);
   }
 }

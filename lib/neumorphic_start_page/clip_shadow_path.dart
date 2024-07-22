@@ -7,9 +7,9 @@ class ClipShadowPath extends StatelessWidget {
   final Widget child;
 
   ClipShadowPath({
-    @required this.shadow,
-    @required this.clipper,
-    @required this.child,
+    required this.shadow,
+    required this.clipper,
+    required this.child,
   });
 
   @override
@@ -28,7 +28,7 @@ class _ClipShadowShadowPainter extends CustomPainter {
   final BoxShadow shadow;
   final CustomClipper<Path> clipper;
 
-  _ClipShadowShadowPainter({@required this.shadow, @required this.clipper});
+  _ClipShadowShadowPainter({required this.shadow, required this.clipper});
 
   @override
   void paint(Canvas canvas, Size size) {

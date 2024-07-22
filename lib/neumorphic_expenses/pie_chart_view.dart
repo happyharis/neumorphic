@@ -3,7 +3,7 @@ import 'package:neumorphism_web/neumorphic_expenses/pie_chart.dart';
 
 class PieChartView extends StatelessWidget {
   const PieChartView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

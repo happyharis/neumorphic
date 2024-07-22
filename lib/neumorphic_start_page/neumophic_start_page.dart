@@ -83,7 +83,7 @@ class NeumorphicStartPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 100),
               child: Text(
                 'Neumorphic',
-                style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ),
           ),
@@ -96,7 +96,7 @@ class NeumorphicStartPage extends StatelessWidget {
                 child: MaterialButton(
                   onPressed: () {},
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  color: Theme.of(context).textTheme.headline1.color,
+                  color: Theme.of(context).textTheme.displayMedium?.color,
                   child: Text(
                     'Let\'s Get Started',
                     style: TextStyle(fontSize: 24, color: Colors.white),

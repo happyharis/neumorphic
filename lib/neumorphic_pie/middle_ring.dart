@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:neumorphism_web/neumorphic_pie/neumorphic_pie.dart';
 
 class MiddleRing extends StatelessWidget {
-  final num width;
+  final double width;
 
-  const MiddleRing({Key key, @required this.width}) : super(key: key);
+  const MiddleRing({Key? key, required this.width}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

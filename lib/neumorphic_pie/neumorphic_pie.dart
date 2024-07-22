@@ -1,6 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:neumorphism_web/neumorphic_pie/middle_ring.dart';
 import 'package:neumorphism_web/neumorphic_pie/progress_rings.dart';

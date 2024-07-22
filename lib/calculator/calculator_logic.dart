@@ -38,7 +38,7 @@ class Calculator extends ChangeNotifier {
 
   void takeAction(
     CalculatorVariable action, {
-    @required bool when,
+    required bool when,
   }) {
     if (when) {
       if (_actions.last is MathOperator) {
@@ -82,7 +82,7 @@ class Calculator extends ChangeNotifier {
 }
 
 abstract class CalculatorVariable {
-  CalculatorVariable({this.value});
+  CalculatorVariable({required this.value});
 
   final String value;
 }
@@ -90,25 +90,33 @@ abstract class CalculatorVariable {
 abstract class MathOperator {}
 
 class CalculatorAdd extends CalculatorVariable with MathOperator {
-  String value = '+';
+  final String value;
+
+  CalculatorAdd({this.value = '+'}) : super(value: value);
 }
 
 class CalculatorMultiply extends CalculatorVariable with MathOperator {
-  String value = '*';
+  final String value;
+
+  CalculatorMultiply({this.value = '*'}) : super(value: value);
 }
 
 class CalculatorDivide extends CalculatorVariable with MathOperator {
-  String value = '/';
+  final String value;
+
+  CalculatorDivide({this.value = '/'}) : super(value: value);
 }
 
 class CalculatorDeduct extends CalculatorVariable with MathOperator {
-  String value = '-';
+  final String value;
+
+  CalculatorDeduct({this.value = '-'}) : super(value: value);
 }
 
 class CalculatorNumber extends CalculatorVariable {
-  CalculatorNumber(this.value);
-
   final String value;
+
+  CalculatorNumber(this.value) : super(value: value);
 }
 
 num parseCalculatorActions(List<CalculatorVariable> actions) {

@@ -1,39 +1,45 @@
 import 'package:flutter/material.dart';
 
 class NeumorphicTheme {
-  NeumorphicTheme({
-    this.outerShadow,
-    this.innerShadowColors,
-    this.borderColor,
-    this.buttonColor,
-    this.isDark = false,
-  });
-
   final List<BoxShadow> outerShadow;
   final List<Color> innerShadowColors;
   final Color borderColor;
   final Color buttonColor;
   final bool isDark;
+
+  NeumorphicTheme({
+    required this.outerShadow,
+    required this.innerShadowColors,
+    required this.borderColor,
+    required this.buttonColor,
+    this.isDark = false,
+  });
+
+  factory NeumorphicTheme.light() {
+    return NeumorphicTheme(
+      innerShadowColors: [kDarkShadow, Colors.white],
+      borderColor: Colors.transparent,
+      buttonColor: kBackgroundColour,
+      outerShadow: kShadow,
+    );
+  }
+
+  factory NeumorphicTheme.dark() {
+    return NeumorphicTheme(
+      innerShadowColors: [
+        kDarkBackgroundShadowColour,
+        kOutline,
+      ],
+      borderColor: kOutline,
+      buttonColor: kDarkBackgroundColour,
+      outerShadow: kDarkBackgroundShadow,
+      isDark: true,
+    );
+  }
 }
 
-final darkNeumorphicTheme = NeumorphicTheme(
-  innerShadowColors: [
-    kDarkBackgroundShadowColour,
-    kOutline,
-  ],
-  borderColor: kOutline,
-  buttonColor: kDarkBackgroundColour,
-  outerShadow: kDarkBackgroundShadow,
-  isDark: true,
-);
-final lightNeumorphicTheme = NeumorphicTheme(
-  innerShadowColors: [kDarkShadow, Colors.white],
-  borderColor: Colors.transparent,
-  buttonColor: kBackgroundColour,
-  outerShadow: kShadow,
-);
-
 final kBackgroundColour = Color.fromRGBO(239, 238, 238, 1);
+final kScaffoldBackgroundColour = Color.fromRGBO(231, 240, 247, 1);
 final kOrange = Color.fromRGBO(238, 134, 48, 1); // rgb(238, 134, 48)
 final kDarkShadow = Color.fromRGBO(216, 213, 208, 1); // rgb(216, 213, 208)
 final kDarkBackgroundColour = Color.fromRGBO(38, 38, 38, 1); // rgb(38,38,38)

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class NeumorphicBar extends StatelessWidget {
   const NeumorphicBar({
-    Key key,
-    @required this.width,
-    @required this.height,
-    @required this.value,
-    @required this.text,
+    Key? key,
+    required this.width,
+    required this.height,
+    required this.value,
+    required this.text,
     this.color,
   }) : super(key: key);
 
@@ -17,7 +17,7 @@ class NeumorphicBar extends StatelessWidget {
   final num value;
 
   final String text;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +56,15 @@ class NeumorphicBar extends StatelessWidget {
 
 class InnerContainer extends StatelessWidget {
   const InnerContainer({
-    Key key,
-    @required this.height,
-    @required this.width,
+    Key? key,
+    required this.height,
+    required this.width,
     this.color,
   }) : super(key: key);
 
   final num height;
   final num width;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -100,9 +100,9 @@ class InnerContainer extends StatelessWidget {
 
 class DugContainer extends StatelessWidget {
   const DugContainer({
-    Key key,
-    @required this.height,
-    @required this.width,
+    Key? key,
+    required this.height,
+    required this.width,
   }) : super(key: key);
   final num height;
   final num width;

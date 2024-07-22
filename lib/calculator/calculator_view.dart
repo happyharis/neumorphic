@@ -144,8 +144,8 @@ class CalculatorView extends StatelessWidget {
 
 class ButtonRow extends StatelessWidget {
   const ButtonRow({
-    Key key,
-    @required this.children,
+    Key? key,
+    required this.children,
   }) : super(key: key);
 
   final List<NeuCalculatorButton> children;
